@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pierre Feuille Ciseaux</title>
+    <link rel="stylesheet" href="jeu.css">
+</head>
+<body>
+    <h1>Pierre! Feuille! Ciseaux</h1>
+    <h2 id="joueurH2">Joueur</h2>
+    <h2 id="robotH2">Robot</h2>
+    <div id="photoJoueur"></div>
+    <div id="photoRobot"></div>
+    <div id="buttonContainer">
+        <button id="pierre">Pierre</button>
+        <button id="feuille">Feuille</button>
+        <button id="ciseaux">Ciseaux</button>
+    </div>
+    <div id="resultat"></div>
+</body>
+<script>
+    let chaineNom = prompt("Entrez votre nom");
+    const resultat = document.getElementById("joueurH2");
+    resultat.innerHTML=chaineNom;
+    function animationResultat(){
+        const resultat = document.getElementById("resultat");
+        resultat.style.fontSize="6em";
+        resultat.style.transition="0.5s"
+        if (resultat.innerHTML==="Perdu"){
+            resultat.style.color="red";
+        }
+        if (resultat.innerHTML==="Gagné"){
+            resultat.style.color="green";
+        }
+        if (resultat.innerHTML==="Egalité"){
+            resultat.style.color="chocolate";
+        }
+        setTimeout (() => {resultat.style.fontSize="0em"; coteJoueur.style.opacity=0}, 1500);
+    }
+    function animationJoueur(pfc){
+        const coteJoueur = document.getElementById("photoJoueur");
+        if(pfc==="Pierre"){
+            coteJoueur.style.backgroundImage = "url('./photos/rockJ.png')";
+        }
+    
+        if(pfc==="Feuille"){
+            coteJoueur.style.backgroundImage = "url('./photos/paperJ.png')";
+        }
+    
+        if(pfc==="Ciseaux"){
+            coteJoueur.style.backgroundImage = "url('./photos/scissorsJ.png')";
+        }
+        coteJoueur.style.opacity=1
+        coteJoueur.style.left="26%"
+        coteJoueur.style.transition="0.5s"
+        setTimeout (() => {coteJoueur.style.left="0px"; coteJoueur.style.opacity=0}, 1500);
+
+    }
+    function animationRobot(pfc){
+        const coteRobot = document.getElementById("photoRobot");
+        if(pfc==="Pierre"){
+            coteRobot.style.backgroundImage = "url('./photos/rockR.png')";
+        }
+    
+        if(pfc==="Feuille"){
+            coteRobot.style.backgroundImage = "url('./photos/paperR.png')";
+        }
+    
+        if(pfc==="Ciseaux"){
+            coteRobot.style.backgroundImage = "url('./photos/scissorsR.png')";
+        }
+        coteRobot.style.opacity=1
+        coteRobot.style.right="26%"
+        coteRobot.style.transition="0.5s"
+        setTimeout (() => {coteRobot.style.right="0px"; coteRobot.style.opacity=0}, 1500);
+    }
+    const buttons = document.querySelectorAll("button");
+
+    for (let i = 0; i<buttons.length; i++){
+        buttons[i].addEventListener("click", function(){
+            console.log("ca marche");
+            const joueur = buttons[i].innerHTML;
+            const robot = buttons[Math.floor(Math.random()*buttons.length)].innerHTML;
+           // console.log(`Joueur : ${joueur} VS Robot : ${robot}`)
+            let resultat="";
+            if(joueur === robot){
+                resultat= "Egalité"
+            }else if((joueur === "Pierre" && robot === "Ciseaux") ||
+             (joueur === "Feuille" && robot === "Pierre") ||
+             (joueur === "Ciseaux" && robot === "Feuille")){
+                resultat = "Gagné";
+             }
+             else{
+                resultat = "Perdu"
+             }
+             document.getElementById("resultat").innerHTML = resultat;
+           animationJoueur(joueur)
+           animationRobot(robot)
+           animationResultat()
+})
+    }
+</script>
+</html>

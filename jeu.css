@@ -1,0 +1,88 @@
+body{
+    background-image: url(./photos/image.jpg);
+}
+
+h1{
+    text-align: center;
+    font-size: 3em;
+    color:brown;
+    text-shadow: 2px 2px 2px black;
+    text-decoration: underline;
+}
+
+
+#puit{
+    color: transparent;
+    background-color: transparent;
+    border: none;
+}
+button{
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    border-radius: 10px;
+    color: transparent;
+    margin-left: 20px;
+    
+}
+button:hover{
+    scale: 1.1;
+    transition: 0.2s ease-in-out;
+    box-shadow: 1px 0px 6px 5px green;
+}
+#pierre{
+    background-image: url(./photos/Pierre.png);
+}
+#feuille{
+    background-image: url(./photos/feuille.png);
+}
+#ciseaux{
+    background-image: url(./photos/Ciseaux.png);
+}
+h2{
+    font-size: 3em;
+    color:bisque;
+    background-color: rgba(0, 0, 0, 0.458);
+    padding: 8px 30px;
+    border-radius: 10px;
+
+}
+#joueurH2{
+    float: left;
+}
+#robotH2{
+    float: right;
+}
+#buttonContainer{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20px;
+}
+#photoJoueur{
+    width: 350px;
+    height: 350px;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 100px;
+    left: 0px;
+}
+#photoRobot{
+    width: 350px;
+    height: 350px;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 100px;
+    right: 0px;
+}
+#resultat{
+    color:crimson;
+    font-size: 0em;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 10px 10px 10px black;
+}
